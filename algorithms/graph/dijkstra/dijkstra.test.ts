@@ -1,7 +1,7 @@
 import { dijkstra } from './dijkstra';
-import { Graph } from '../../data-structures/graph/graph';
-import { Vertex } from '../../data-structures/graph/vertex';
-import { WeightedEdge } from '../../data-structures/graph/weighted-edge';
+import { Graph } from '../../../data-structures/graph/graph';
+import { Vertex } from '../../../data-structures/graph/vertex';
+import { WeightedEdge } from '../../../data-structures/graph/weighted-edge';
 
 describe('Dijkstra', () => {
     let graph: Graph;

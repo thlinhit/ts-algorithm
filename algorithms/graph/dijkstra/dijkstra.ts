@@ -1,14 +1,24 @@
-import { Graph } from '../../data-structures/graph/graph';
-import { Vertex } from '../../data-structures/graph/vertex';
-import { WeightedEdge } from '../../data-structures/graph/weighted-edge';
+import { Graph } from '../../../data-structures/graph/graph';
+import { Vertex } from '../../../data-structures/graph/vertex';
+import { WeightedEdge } from '../../../data-structures/graph/weighted-edge';
 
 export function dijkstra(graph: Graph, start: Vertex): { costs: {}; previousVertices: {} } {
-    const { previousVertices, costs } = initialize(graph, start);
+    const previousVertices = {};
+    const costs = {};
     const visitedVertices = {};
     const queue = [];
 
+    // Initialize
+    graph.getVertices().forEach(vertex => {
+        previousVertices[vertex.name] = null;
+        costs[vertex.name] = Infinity;
+    });
+
+    costs[start.name] = 0;
+
     queue.push({ vertex: start, cost: costs[start.name] });
 
+    // Run
     while (queue.length > 0) {
         const visitingVertex: Vertex = pollClosestVertex(queue);
 
@@ -34,20 +44,6 @@ export function dijkstra(graph: Graph, start: Vertex): { costs: {}; previousVert
         costs,
         previousVertices,
     };
-}
-
-function initialize(graph: Graph, start: Vertex): { previousVertices: {}; costs: {} } {
-    const previousVertices = {};
-    const costs = {};
-
-    graph.getVertices().forEach(vertex => {
-        previousVertices[vertex.name] = null;
-        costs[vertex.name] = Infinity;
-    });
-
-    costs[start.name] = 0;
-
-    return { previousVertices, costs };
 }
 
 // TODO: find out more about PriorityQueue and refactor
