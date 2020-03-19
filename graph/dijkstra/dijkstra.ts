@@ -1,41 +1,68 @@
-export interface Vertex {
-    name: string;
+import { Graph } from '../../data-structures/graph/graph';
+import { Vertex } from '../../data-structures/graph/vertex';
+import { WeightedEdge } from '../../data-structures/graph/weighted-edge';
+
+export function dijkstra(graph: Graph, start: Vertex): { costs: {}; previousVertices: {} } {
+    const { previousVertices, costs } = initialize(graph, start);
+    const visitedVertices = {};
+    const queue = [];
+
+    queue.push({ vertex: start, cost: costs[start.name] });
+
+    while (queue.length > 0) {
+        const visitingVertex: Vertex = pollClosestVertex(queue);
+
+        if (!visitedVertices[visitingVertex.name]) {
+            visitedVertices[visitingVertex.name] = true;
+
+            const neighbourEdges: WeightedEdge[] = graph.getNeighbourEdges(visitingVertex);
+
+            for (const edge of neighbourEdges) {
+                const neighbour = edge.to;
+                const costToNeighbour = costs[visitingVertex.name] + edge.weight;
+                if (costs[neighbour.name] > costToNeighbour) {
+                    costs[neighbour.name] = costToNeighbour;
+                    previousVertices[neighbour.name] = visitingVertex.name;
+                }
+
+                queue.push({ vertex: neighbour, cost: costs[neighbour.name] });
+            }
+        }
+    }
+
+    return {
+        costs,
+        previousVertices,
+    };
 }
 
-export interface WeightEdge {
-    from: Vertex;
-    to: Vertex;
-    weight: number;
-}
-``;
+function initialize(graph: Graph, start: Vertex): { previousVertices: {}; costs: {} } {
+    const previousVertices = {};
+    const costs = {};
 
-export interface Graph {
-    edges: WeightEdge[];
-}
+    graph.getVertices().forEach(vertex => {
+        previousVertices[vertex.name] = null;
+        costs[vertex.name] = Infinity;
+    });
 
-function dijkstra(graph: Graph, start: Vertex): string {
-    const found = graph.edges.find(edge => edge.from === start);
-    return !!found ? 'ok' : 'not found';
+    costs[start.name] = 0;
+
+    return { previousVertices, costs };
 }
 
-// run
-export function test(): void {
-    const graph = { edges: [] } as Graph;
-    const bookVertex = { name: 'Book' } as Vertex;
-    const rareLPVertex = { name: 'Rare LP' } as Vertex;
-    const posterVertex = { name: 'Poster' } as Vertex;
-    const drumSetVertex = { name: 'Drum Set' } as Vertex;
-    const bassGuitarVertex = { name: 'Bass Guitar' } as Vertex;
-    const pianoVertex = { name: 'Piano' } as Vertex;
+// TODO: find out more about PriorityQueue and refactor
+function pollClosestVertex(queue: { vertex: Vertex; cost: number }[]): Vertex {
+    let result: { vertex: Vertex; cost: number };
+    for (const element of queue) {
+        if (!result) {
+            result = element;
+        } else if (result.cost > element.cost) {
+            result = element;
+        }
+    }
 
-    graph.edges.push({ from: bookVertex, to: rareLPVertex, weight: 5 });
-    graph.edges.push({ from: bookVertex, to: posterVertex, weight: 0 });
-    graph.edges.push({ from: rareLPVertex, to: bassGuitarVertex, weight: 15 });
-    graph.edges.push({ from: rareLPVertex, to: drumSetVertex, weight: 20 });
-    graph.edges.push({ from: posterVertex, to: drumSetVertex, weight: 35 });
-    graph.edges.push({ from: posterVertex, to: bassGuitarVertex, weight: 30 });
-    graph.edges.push({ from: bassGuitarVertex, to: pianoVertex, weight: 20 });
-    graph.edges.push({ from: drumSetVertex, to: pianoVertex, weight: 10 });
+    // remove element out of queue
+    queue.splice(queue.indexOf(result), 1);
 
-    console.log(dijkstra(graph, bookVertex));
+    return result.vertex;
 }
