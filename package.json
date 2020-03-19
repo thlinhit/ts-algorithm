@@ -1,0 +1,14 @@
+{
+  "name": "algorithm",
+  "version": "0.0.1",
+  "description": "It is used for running my algorithm implementations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
