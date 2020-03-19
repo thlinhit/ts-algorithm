@@ -2,45 +2,33 @@ import { Vertex } from './vertex';
 import { WeightedEdge } from './weighted-edge';
 
 export class Graph {
-    private edges: WeightedEdge[];
-    private vertices: Vertex[] = [];
+    // Implement Hash for quick lookup
+    private edges: { [key: string]: WeightedEdge } = {};
+    private vertices: { [key: string]: Vertex } = {};
 
-    constructor(edges: WeightedEdge[]) {
-        this.edges = edges || [];
-        for (const edge of edges) {
-            this.vertices.push(...[edge.to, edge.from]);
-            this.vertices = [...new Set(this.vertices)];
-        }
+    addEdge(edge: WeightedEdge): Graph {
+        this.edges[edge.getId()] = edge;
+
+        this.addVertex(edge.start);
+        this.addVertex(edge.end);
+
+        return this;
+    }
+
+    addVertex(vertex: Vertex): Graph {
+        this.vertices[vertex.name] = vertex;
+        return this;
     }
 
     getEdges(): WeightedEdge[] {
-        return this.edges;
+        return Object.values(this.edges).map(edge => Object.assign({}, edge));
     }
 
     getNeighbourEdges(vertex: Vertex): WeightedEdge[] {
-        return this.edges.filter(edge => edge.from === vertex);
+        return Object.values(this.edges).filter(edge => edge.hasStart(vertex));
     }
 
     getVertices(): Vertex[] {
-        return this.vertices;
-    }
-
-    static builder(): Graph.Builder {
-        return new Graph.Builder();
-    }
-}
-
-export namespace Graph {
-    export class Builder {
-        private edges: WeightedEdge[] = [];
-
-        addEdge(edge: WeightedEdge): Builder {
-            this.edges.push(edge);
-            return this;
-        }
-
-        build(): Graph {
-            return new Graph(this.edges);
-        }
+        return Object.values(this.vertices).map(vertex => Object.assign({}, vertex));
     }
 }

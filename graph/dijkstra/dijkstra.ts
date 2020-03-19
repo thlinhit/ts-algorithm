@@ -18,7 +18,7 @@ export function dijkstra(graph: Graph, start: Vertex): { costs: {}; previousVert
             const neighbourEdges: WeightedEdge[] = graph.getNeighbourEdges(visitingVertex);
 
             for (const edge of neighbourEdges) {
-                const neighbour = edge.to;
+                const neighbour = edge.end;
                 const costToNeighbour = costs[visitingVertex.name] + edge.weight;
                 if (costs[neighbour.name] > costToNeighbour) {
                     costs[neighbour.name] = costToNeighbour;
