@@ -1,12 +1,12 @@
 import { Vertex } from './vertex';
-import { WeightedEdge } from './weighted-edge';
+import { Edge } from './edge';
 
 export class Graph {
     // Implement Hash for quick lookup
-    private edges: { [key: string]: WeightedEdge } = {};
+    private edges: { [key: string]: Edge } = {};
     private vertices: { [key: string]: Vertex } = {};
 
-    addEdge(edge: WeightedEdge): Graph {
+    addEdge(edge: Edge): Graph {
         this.edges[edge.getId()] = edge;
 
         this.addVertex(edge.start);
@@ -20,11 +20,11 @@ export class Graph {
         return this;
     }
 
-    getEdges(): WeightedEdge[] {
+    getEdges(): Edge[] {
         return Object.values(this.edges).map(edge => Object.assign({}, edge));
     }
 
-    getNeighbourEdges(vertex: Vertex): WeightedEdge[] {
+    getNeighbourEdges(vertex: Vertex): Edge[] {
         return Object.values(this.edges).filter(edge => edge.hasStart(vertex));
     }
 

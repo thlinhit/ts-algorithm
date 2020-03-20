@@ -1,6 +1,6 @@
 import { Graph } from '../../../data-structures/graph/graph';
 import { Vertex } from '../../../data-structures/graph/vertex';
-import { WeightedEdge } from '../../../data-structures/graph/weighted-edge';
+import { Edge } from '../../../data-structures/graph/edge';
 
 export function dijkstra(graph: Graph, start: Vertex): { costs: {}; previousVertices: {} } {
     const previousVertices = {};
@@ -25,7 +25,7 @@ export function dijkstra(graph: Graph, start: Vertex): { costs: {}; previousVert
         if (!visitedVertices[visitingVertex.name]) {
             visitedVertices[visitingVertex.name] = true;
 
-            const neighbourEdges: WeightedEdge[] = graph.getNeighbourEdges(visitingVertex);
+            const neighbourEdges: Edge[] = graph.getNeighbourEdges(visitingVertex);
 
             for (const edge of neighbourEdges) {
                 const neighbour = edge.end;

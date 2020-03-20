@@ -1,10 +1,10 @@
 import { Vertex } from './vertex';
 
-export class WeightedEdge {
+export class Edge {
     constructor(
         public start: Vertex,
         public end: Vertex,
-        public weight: number
+        public weight?: number
     ) {}
 
     hasStart(vertex: Vertex): boolean {
@@ -13,5 +13,9 @@ export class WeightedEdge {
 
     getId(): string {
         return `${this.start.name}_${this.end.name}`;
+    }
+
+    isWeighted(): boolean {
+        return !!this.weight;
     }
 }

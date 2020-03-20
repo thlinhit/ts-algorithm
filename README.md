@@ -1,9 +1,10 @@
-
-
 ## SOURCES
 
 https://github.com/trekhleb/javascript-algorithms
 
 ## Need to do
 
-* [ ] Understand Dijkstra and reimplement
+- [ ] Implement `MinHeap`
+- [ ] Implement `Priority Queue` - depend `MinHeap`
+- [ ] Refactor `Dijkstra code` - depend `Priority Queue`
+- [ ] Implement `Linked List`

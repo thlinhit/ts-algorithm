@@ -1,7 +1,7 @@
 import { dijkstra } from './dijkstra';
 import { Graph } from '../../../data-structures/graph/graph';
 import { Vertex } from '../../../data-structures/graph/vertex';
-import { WeightedEdge } from '../../../data-structures/graph/weighted-edge';
+import { Edge } from '../../../data-structures/graph/edge';
 
 describe('Dijkstra', () => {
     let graph: Graph;
@@ -14,14 +14,14 @@ describe('Dijkstra', () => {
 
     beforeEach(() => {
         graph = new Graph()
-            .addEdge(new WeightedEdge(bookVertex, rareLPVertex, 5))
-            .addEdge(new WeightedEdge(bookVertex, posterVertex, 0))
-            .addEdge(new WeightedEdge(rareLPVertex, bassGuitarVertex, 15))
-            .addEdge(new WeightedEdge(rareLPVertex, drumSetVertex, 20))
-            .addEdge(new WeightedEdge(posterVertex, drumSetVertex, 35))
-            .addEdge(new WeightedEdge(posterVertex, bassGuitarVertex, 30))
-            .addEdge(new WeightedEdge(bassGuitarVertex, pianoVertex, 20))
-            .addEdge(new WeightedEdge(drumSetVertex, pianoVertex, 10));
+            .addEdge(new Edge(bookVertex, rareLPVertex, 5))
+            .addEdge(new Edge(bookVertex, posterVertex, 0))
+            .addEdge(new Edge(rareLPVertex, bassGuitarVertex, 15))
+            .addEdge(new Edge(rareLPVertex, drumSetVertex, 20))
+            .addEdge(new Edge(posterVertex, drumSetVertex, 35))
+            .addEdge(new Edge(posterVertex, bassGuitarVertex, 30))
+            .addEdge(new Edge(bassGuitarVertex, pianoVertex, 20))
+            .addEdge(new Edge(drumSetVertex, pianoVertex, 10));
     });
 
     test('should build the closest paths from start to others', () => {
@@ -44,7 +44,7 @@ describe('Dijkstra', () => {
     });
 
     test('negative weighted edge should not work properly', () => {
-        graph.addEdge(new WeightedEdge(rareLPVertex, posterVertex, -25));
+        graph.addEdge(new Edge(rareLPVertex, posterVertex, -25));
 
         const { costs, previousVertices } = dijkstra(graph, bookVertex);
 
