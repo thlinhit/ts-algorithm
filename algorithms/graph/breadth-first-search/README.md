@@ -6,7 +6,7 @@
 > 1. Is there any path from node A to node B?
 > 2. What is the shortest path from node A to node B?
 
-`Keep in mind that: It is only true for no weighted graphs, For Weighted Graphs, check` [Dijkstra's](./dijkstra.md)
+`Keep in mind that: It is only true for no weighted graphs, For Weighted Graphs, check` [Dijkstra's](../dijkstra/README.md)
 
 ## **💡 Usage**
 
