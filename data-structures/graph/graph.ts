@@ -15,6 +15,11 @@ export class Graph {
         return this;
     }
 
+    addEdges(edges: Edge[]): Graph {
+        edges.forEach(this.addEdge.bind(this));
+        return this;
+    }
+
     addVertex(vertex: Vertex): Graph {
         this.vertices[vertex.name] = vertex;
         return this;
