@@ -1,16 +1,16 @@
+import { Vertex } from './../../../data-structures/graph/vertex';
 import { dijkstra } from './dijkstra';
 import { Graph } from '../../../data-structures/graph/graph';
-import { Vertex } from '../../../data-structures/graph/vertex';
 import { Edge } from '../../../data-structures/graph/edge';
 
 describe('Dijkstra', () => {
     let graph: Graph;
-    const bookVertex = { name: 'Book' } as Vertex;
-    const rareLPVertex = { name: 'Rare LP' } as Vertex;
-    const posterVertex = { name: 'Poster' } as Vertex;
-    const drumSetVertex = { name: 'Drum Set' } as Vertex;
-    const bassGuitarVertex = { name: 'Bass Guitar' } as Vertex;
-    const pianoVertex = { name: 'Piano' } as Vertex;
+    const bookVertex = new Vertex('Book');
+    const rareLPVertex = new Vertex('Rare LP');
+    const posterVertex = new Vertex('Poster');
+    const drumSetVertex = new Vertex('Drum Set');
+    const bassGuitarVertex = new Vertex('Bass Guitar');
+    const pianoVertex = new Vertex('Piano');
 
     beforeEach(() => {
         graph = new Graph()
