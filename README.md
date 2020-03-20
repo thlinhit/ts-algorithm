@@ -23,3 +23,7 @@ https://github.com/trekhleb/javascript-algorithms
 2. "Algorithms + Data Structures = Programs" - Niklaus Wirth
 3. [Online - Algorithms, 4th Edition](https://algs4.cs.princeton.edu/12oop/)
 4. [Amazon - Algorithms, 4th Edition](https://www.amazon.com/gp/product/B004P8J1NA/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&tag=algs4-coursera-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=B004P8J1NA)
+
+## Benchmark code
+
+1. https://www.baeldung.com/java-collections-complexity
