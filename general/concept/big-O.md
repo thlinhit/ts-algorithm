@@ -21,9 +21,9 @@ The tree will have depth N. Each node has two children. Therefore each level wil
 | ----- | ------ | :------------------------------: | ------: |
 | 1     | 1      |                                  | $`2^0`$ |
 | 2     | 2      |     2 \* previous level = 2      | $`2^1`$ |
-| 3     | 4      | 2 _ previous level = 2 _ $`2^1`$ | $`2^2`$ |
-| 4     | 8      | 2 _ previous level = 2 _ $`2^2`$ | $`2^3`$ |
-| 5     | 16     | 2 _ previous level = 2 _ $`2^3`$ | $`2^4`$ |
+| 3     | 4      | $`2 * previous level = 2 + 2^1`$ | $`2^2`$ |
+| 4     | 8      | $`2 * previous level = 2 + 2^2`$ | $`2^3`$ |
+| 5     | 16     | $`2 * previous level = 2 + 2^3`$ | $`2^4`$ |
 
 Therefore, there will be $`2^0 + 2^1 + 2^2 + .... + 2^N = 2^{N+1} - 1`$ [demonstration](./math-formular.md#sum-of-powers-of-2)
 
