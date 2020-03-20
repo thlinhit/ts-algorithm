@@ -57,7 +57,7 @@ function fib(n: number): number {
 }
 ```
 
-since `fib(b)` takes \$`O(2^n)`\$ time and it's called `n` times, then it's $`O(n * 2^n)`$ => **WRONG** 😭
+since `fib(b)` takes $`O(2^n)`$ time and it's called `n` times, then it's $`O(n * 2^n)`$ => **WRONG** 😭
 
 let walk through each call
 
@@ -66,4 +66,4 @@ let walk through each call
 `fib(3)` -> $2^3$ steps <br />
 ...
 
-=> Total is: \$`2^1 + 2^2 + 2^3 + ... + 2^n = 2^{n+1} - 1`$ and the answer is $`O(2^n)`\$
+=> Total is: $`2^1 + 2^2 + 2^3 + ... + 2^n = 2^{n+1} - 1`$ and the answer is $`O(2^n)`$
