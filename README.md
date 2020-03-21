@@ -2,6 +2,18 @@
 
 https://github.com/trekhleb/javascript-algorithms
 
+
+## Must-Have Knowledge
+
+| Data Structures  | Algorithms  | Concepts  |
+|---|---|---|
+|  Linked Lists | Breadth First Search  | Bit manipulation  |
+| Trees, Tries, Graphs  | Depth-First Search | Memory (Stack vs Heap)  |
+| Stacks & Queues  | Binary Search  |  Recursion |
+|  Heaps | Merge Sort  | Dynamic Programming  |
+| Vectors / Arraylists  | Quick Sort  | BigO Time & Space  |
+| Hash tables | | |
+
 ## Need to do
 
 - [ ] Implement `MinHeap`

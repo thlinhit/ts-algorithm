@@ -31,17 +31,24 @@ Therefore, there will be $`2^0 + 2^1 + 2^2 + .... + 2^N = 2^{N+1} - 1`$ [demonst
 >
 > 🎯 the base of a log does not matter for big O since logs of different bases are only different by a constant factor.
 
+## Log N Runtimes
+
+When you see a problem where the number of elements in the problem gets halved each time, that will likely be a $`O(log n)`$ runtime.
+
 ## Examples
 
-- **`Suppose we had an algorithm that took in an array of strings, sorted each string, and then sorted the full array. What would the runtime be?`**
+#### **`Suppose we had an algorithm that took in an array of strings, sorted each string, and then sorted the full array. What would the runtime be?`**
+
 
   - let `s` be the length of the longest string.
   - let `a` be the length of the array.
   - Soting each string is **`O(s log s)`**. We do this for every string, so that's **`O(a*s log s)`**.
   - Now we have to sort all the strings. This could be **`O(a log a)`**. But it is incorrect, because compare two strings takes **`O(s)`**. So the correct runtime is **`O(s*a log a)`**
   - Finally the total runtime is **`O(a*s(log s + log a)`**
+  
+---
 
-- **`Suppose the following code prints all Fibonacci numbers from 0 to n. What is its time complexity?`**
+#### **`Suppose the following code prints all Fibonacci numbers from 0 to n. What is its time complexity?`**
 
 ```typescript
 function allFib(n: number): void {
