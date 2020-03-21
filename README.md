@@ -2,6 +2,14 @@
 
 https://github.com/trekhleb/javascript-algorithms
 
+## Need to do
+
+- [ ] Implement `Linked List`
+- [ ] Implement `MinHeap`
+- [ ] Implement `Priority Queue` - depend `MinHeap`
+- [ ] Refactor `Dijkstra code` - depend `Priority Queue`
+- [ ] Revise aLbega (https://medium.com/@thucnc/tóm-lược-một-số-kiến-thức-về-đại-số-tổ-hợp-ứng-dụng-trong-tin-h%E1%BB%8Dc-4cbb58b90162)
+- [ ] Revise BigO Time and Space (CCI)
 
 ## Must-Have Knowledge
 
@@ -14,13 +22,19 @@ https://github.com/trekhleb/javascript-algorithms
 | Vectors / Arraylists  | Quick Sort  | BigO Time & Space  |
 | Hash tables | | |
 
-## Need to do
 
-- [ ] Implement `MinHeap`
-- [ ] Implement `Priority Queue` - depend `MinHeap`
-- [ ] Refactor `Dijkstra code` - depend `Priority Queue`
-- [ ] Implement `Linked List`
-- [ ] Revise aLbega (https://medium.com/@thucnc/tóm-lược-một-số-kiến-thức-về-đại-số-tổ-hợp-ứng-dụng-trong-tin-h%E1%BB%8Dc-4cbb58b90162)
+## Powers of 2 tables
+
+| Power of 2  | Exact value  | Approx. value  | into MB, GB, ..  |
+|:---:|:---:|:---:|:---:|
+|  7 | 128  |  |  |
+|  8 | 256  |  |  |
+|  10 | 1024  | 1000 | 1 KB |
+|  16 | 65536  |  | 64 KB |
+|  20 | 1,048,576  | 1 million | 1 MB |
+|  30 | 1,073,741,824  | 1 billion | 1 GB |
+|  32 | 4,294,967,296  |  | 4 GB |
+|  40 | 1,099,511,627,776  | 1 trillion | 1 TB |
 
 ---
 
