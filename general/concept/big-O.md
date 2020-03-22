@@ -74,3 +74,45 @@ let walk through each call
 ...
 
 => Total is: $`2^1 + 2^2 + 2^3 + ... + 2^n = 2^{n+1} - 1`$ and the answer is $`O(2^n)`$
+
+---
+
+#### **`The following code performs integer division`**
+
+```typescript
+function div(a: number, int: number): number {
+  let count = 0;
+  let sum = b;
+  while (sum <= a) {
+    sum += b;
+    count++;
+  }
+  return count;
+}
+```
+
+the number of loop equals to `count`. So the rum time is $`O(log(a/b)`$
+
+---
+
+#### **`You are looking for a specific value in a binary tree, but the tree is not a binary search tree. What is the time complexity of this?`**
+
+It takes $`O(n)`$ as need to search all elements of the tree.
+
+---
+
+#### **`The following code sums the digits in a number`**
+
+```typescript
+function sumDigits(n: number): number {
+  let sum = 0;
+  while (sum > 0) {
+    sum += n % 10;
+    n /= 10;
+  }
+  return sum;
+}
+```
+
+The rumtime will be the numbers of digits int the number. A number with $`d`$ digits has a runtime up to $`10^d`$. if $`n = 10^d`$ then $`logd = n`$ => the runtime is $`O(log n)`$
+
