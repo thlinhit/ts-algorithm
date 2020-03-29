@@ -53,3 +53,9 @@ https://github.com/trekhleb/javascript-algorithms
 ## Benchmark code
 
 1. https://www.baeldung.com/java-collections-complexity
+
+---
+
+## Improvement
+
+- [ ] how to measure the number of times a method is called? (Use decorator).
