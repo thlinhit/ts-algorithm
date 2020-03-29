@@ -6,10 +6,12 @@ class DoublyNode<T> {
 
 export class DoublyLinkedList<T> implements LinkedList<T> {
   private head: DoublyNode<T>;
+  private tail: DoublyNode<T>;
 
   addFirst(value: T): void {
     if (!this.head) {
       this.head = new DoublyNode(value);
+      this.tail = this.head;
       return;
     }
 
@@ -19,15 +21,15 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
   }
 
   addLast(value: T): void {
-    const lastNode = this.getLastNode();
+    if (!this.head) {
+      this.head = new DoublyNode(value);
+      this.tail = this.head;
+      return;
+    }
 
-    if (!lastNode) {
-        this.head = new DoublyNode(value);
-        return;
-    } 
-
-    const newNode = new DoublyNode(value, null, lastNode);
-    lastNode.next = newNode;
+    const newNode = new DoublyNode(value, null, this.tail);
+    this.tail.next = newNode;
+    this.tail = newNode;
   }
 
   peekFirst(): T {
@@ -35,15 +37,15 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
   }
 
   peekLast(): T {
-    return this.getLastNode()?.value;
+    return this.tail?.value || null;
   }
 
   pollFirst(): T {
     if (!this.head?.next) {
-        const current = this.head;
-        this.head = null;
-        return current?.value || null;
-    } 
+      const current = this.head;
+      this.head = this.tail = null;
+      return current?.value || null;
+    }
 
     const current = this.head;
 
@@ -54,39 +56,46 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
   }
 
   pollLast(): T {
-    const lastNode = this.getLastNode();
-    if (!lastNode?.prev) {
-        const current = lastNode;
-        this.head = null;
-        return current?.value || null;
+    const current = this.tail;
+    if (current == this.head) {
+      this.head = this.tail = null;
+      return current?.value || null;
     }
 
-    lastNode.prev.next = null;
-    return lastNode.value;
+    this.tail = this.tail.prev;
+    this.tail.next = null;
+    return current.value;
   }
 
   remove(value: T): boolean {
+    if (!this.head) {
+      return false;
+    }
+
+    if (this.head.value == value) {
+      if (this.head == this.tail) {
+        this.head = this.tail = null;
+      } else {
+        this.head = this.head.next;
+        this.head.prev = null;
+      }
+      return true;
+    }
+
     let current = this.head;
 
-    if (!current) {
-        return false;
-    }
-
-    if (!current.next && current.value == value) {
-        this.head = null;
-        return true;
-    }
-
     while (current) {
-        if (current.value == value) {
-            if (current == this.head) {
-                this.head = current.next;
-            }
-            if (current.next) current.next.prev = current.prev;
-            if (current.prev) current.prev.next = current.next;
-            return true;
+      if (current.value == value) {
+        if (current == this.tail) {
+          this.tail = current.prev;
+          this.tail.next = null;
+        } else {
+          current.next.prev = current.prev;
+          current.prev.next = current.next;
         }
-        current = current.next;
+        return true;
+      }
+      current = current.next;
     }
 
     return false;
@@ -94,15 +103,5 @@ export class DoublyLinkedList<T> implements LinkedList<T> {
 
   isEmpty(): boolean {
     return !this.head;
-  }
-
-  private getLastNode(): DoublyNode<T> {
-    let current = this.head;
-
-    while (current?.next) {
-      current = current.next;
-    }
-
-    return current;
   }
 }
