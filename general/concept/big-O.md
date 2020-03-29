@@ -116,3 +116,10 @@ function sumDigits(n: number): number {
 
 The rumtime will be the numbers of digits int the number. A number with $`d`$ digits has a runtime up to $`10^d`$. if $`n = 10^d`$ then $`logd = n`$ => the runtime is $`O(log n)`$
 
+
+
+---
+
+### BigO cheatsheet
+
+https://www.bigocheatsheet.com
