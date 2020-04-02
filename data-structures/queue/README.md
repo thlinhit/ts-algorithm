@@ -1,3 +1,11 @@
+# Queue
+
+A **Queue** is an abstract data type that serves as a collection of elements, it has two operations:
+
+* **enqueue:** add an element to the collection
+* **dequeue:** take and remove the oldest added element.
+
+
 # Priority Queue
 
 Priority Queue is an extension of a `Queue` with following properties:
