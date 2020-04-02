@@ -23,6 +23,7 @@ Stack is implemened using:
   * the Number of array accesses when pushing N elements = $`N + (2 + 4 + ... + N)`$ = $`N + 2^{logN} - 1`$ ~= $`N + N`$. But before we reach $`2^(LogN + 1)`$ we have to push k elements So the total number ~= $`3N`$
 
 => 2N + k ~ 3N
+
 * [Singly Linked List](../linked-list/singly-linked-list.ts)
   * **Drawback**: occupy more memory, slower than the array based stack
   * Use extra times and space to deal with the links

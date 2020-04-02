@@ -5,6 +5,10 @@ A **Queue** is an abstract data type that serves as a collection of elements, it
 * **enqueue:** add an element to the collection
 * **dequeue:** take and remove the oldest added element.
 
+## Implementation
+
+* Circular Array
+* [Linked List](../linked-list/README.md)
 
 # Priority Queue
 
