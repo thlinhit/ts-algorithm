@@ -1,12 +1,11 @@
-import { DoublyLinkedList } from './../linked-list/doubly-linked-list';
+import { SinglyLinkedList } from './../linked-list/singly-linked-list';
 import { LinkedList } from './../linked-list/linked-list';
-
 
 export class Queue<T> {
     private list: LinkedList<T>;
 
     constructor() {
-        this.list = new DoublyLinkedList();
+        this.list = new SinglyLinkedList();
     }
 
     enqueue(element: T): void {
