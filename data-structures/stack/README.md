@@ -19,15 +19,18 @@ Stack is implemened using:
 
 * Array / Dynamic Array
   * **Drawback**: have to resize when the number elements added goes beyond the size allocated. can be waste of memory spave as allocate more than needed. 
-  * Not efficient for the huge number of elements
-  * the Number of array accesses when pushing N elements = $`N + (2 + 4 + ... + N)`$ = $`N + 2^{logN} - 1`$ ~= $`N + N`$. But before we reach $`2^(LogN + 1)`$ we have to push k elements So the total number ~= $`3N`$
+    * Not efficient for the huge number of elements
+    * the Number of array accesses when pushing N elements = $`N + (2 + 4 + ... + N)`$ = $`N + 2^{logN} - 1`$ ~= $`N + N`$. But before we reach $`2^(LogN + 1)`$ we have to push k elements So the total number ~= $`3N`$
+  * the most common implementation has best-case O(1) push and pop, worst-case O(n) push and O(1) pop
+  * Can levarage cache locality
 
 => 2N + k ~ 3N
 
 * [Singly Linked List](../linked-list/singly-linked-list.ts)
   * **Drawback**: occupy more memory, slower than the array based stack
-  * Use extra times and space to deal with the links
-  * Total amount of time will be higher than array-based stack
+    * Use extra times and space to deal with the links
+    * Total amount of time will be higher than array-based stack
+  * the cost to push or pop into a linked-list-backed stack is also O(1) worst-case. 
 
 ![](README-2020-04-02-17-24-56.png)
 
