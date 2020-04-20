@@ -27,9 +27,11 @@ export class Mergesort<T> {
 
   private sort(lo: number, hi: number): void {
     if (lo >= hi) return;
+    // TODO: switch to insertion sort if elements ~ 7
     const mid = lo + Math.floor((hi - lo) / 2);
     this.sort(lo, mid);
     this.sort(mid + 1, hi);
+    if (this.comparator(this.arr[mid], this.arr[mid + 1]) <= 0) return;
     this.merge(lo, mid, hi);
   }
 }
