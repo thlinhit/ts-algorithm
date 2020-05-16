@@ -1,14 +1,17 @@
+import { Comparator } from './../../../util/comparator';
 import { Mergesort } from './merge-sort';
 
 describe('Mergesort', () => {
   test('should work', () => {
     const arr: number[] = [5, 4, 1, 7, 9, 10, 2, 3];
 
-    Mergesort.sort(arr, (a1: number, a2: number) => {
+    const numberComparator: Comparator<number> = Comparator.create((a1: number, a2: number) => {
       if (a1 == a2) return 0;
       else if (a1 < a2) return -1;
       else return 1;
-    });
+    }); 
+
+    Mergesort.sort(arr, numberComparator);
 
     expect(arr).toEqual([1, 2, 3, 4, 5, 7, 9, 10]);
   });
@@ -27,11 +30,13 @@ describe('Mergesort', () => {
       { name: 'Baby', age: 1 },
     ];
 
-    Mergesort.sort(arr, (p1: Person, p2: Person) => {
+    const ageComparator: Comparator<Person> = Comparator.create((p1: Person, p2: Person) => {
       if (p1.age == p2.age) return 0;
       else if (p1.age < p2.age) return -1;
       else return 1;
-    });
+    }); 
+
+    Mergesort.sort(arr, ageComparator);
 
      expect(arr).toEqual([
        { name: 'Baby', age: 1 },

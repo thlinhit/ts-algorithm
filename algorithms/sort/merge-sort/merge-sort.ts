@@ -1,11 +1,13 @@
+import { Comparator } from '../../../util/comparator';
+
 export class Mergesort<T> {
   readonly aux: T[];
 
-  private constructor(private arr: T[], private comparator: (t1: T, t2: T) => -1 | 0 | 1) {
+  private constructor(private arr: T[], private comparator: Comparator<T>) {
     this.aux = new Array<T>(arr.length);
   }
 
-  static sort<T>(arr: T[], comparator: (t1: T, t2: T) => -1 | 0 | 1): void {
+  static sort<T>(arr: T[], comparator: Comparator<T>): void {
     new Mergesort(arr, comparator).sort(0, arr.length - 1);
   }
 
@@ -20,7 +22,7 @@ export class Mergesort<T> {
     for (let k = lo; k <= hi; k++) {
       if (i > mid) this.arr[k] = this.aux[j++];
       else if (j > hi) this.arr[k] = this.aux[i++];
-      else if (this.comparator(this.aux[i], this.aux[j]) <= 0) this.arr[k] = this.aux[i++];
+      else if (this.comparator.lessOrEqual(this.aux[i], this.aux[j])) this.arr[k] = this.aux[i++];
       else this.arr[k] = this.aux[j++];
     }
   }
@@ -31,7 +33,7 @@ export class Mergesort<T> {
     const mid = lo + Math.floor((hi - lo) / 2);
     this.sort(lo, mid);
     this.sort(mid + 1, hi);
-    if (this.comparator(this.arr[mid], this.arr[mid + 1]) <= 0) return;
+    if (this.comparator.lessOrEqual(this.arr[mid], this.arr[mid + 1])) return;
     this.merge(lo, mid, hi);
   }
 }
