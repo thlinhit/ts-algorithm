@@ -3,7 +3,7 @@ import { Mergesort } from './merge-sort';
 
 describe('Mergesort', () => {
   test('should work', () => {
-    const arr: number[] = [5, 4, 1, 7, 9, 10, 2, 3];
+    const arr: number[] = [5, 4, 1, 7, 9, 10, 2, 3, 6, 11, 8];
 
     const numberComparator: Comparator<number> = Comparator.create((a1: number, a2: number) => {
       if (a1 == a2) return 0;
@@ -13,7 +13,7 @@ describe('Mergesort', () => {
 
     Mergesort.sort(arr, numberComparator);
 
-    expect(arr).toEqual([1, 2, 3, 4, 5, 7, 9, 10]);
+    expect(arr).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
   });
 
   test('should keep the order of the same keys', () => {

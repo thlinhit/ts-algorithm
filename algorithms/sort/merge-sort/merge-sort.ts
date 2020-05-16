@@ -1,3 +1,4 @@
+import { Insertionsort } from './../insertion-sort/inserstion-sort';
 import { Comparator } from '../../../util/comparator';
 
 export class Mergesort<T> {
@@ -29,11 +30,20 @@ export class Mergesort<T> {
 
   private sort(lo: number, hi: number): void {
     if (lo >= hi) return;
-    // TODO: switch to insertion sort if elements ~ 7
+
+    // Improvement: Use Insertionsort because Mergesort is complicated for arrays of ~ 7 elements.
+    if ((hi - lo + 1) <= 7) {
+      Insertionsort.sort(this.arr, this.comparator, lo, hi);
+    }
+
     const mid = lo + Math.floor((hi - lo) / 2);
+
     this.sort(lo, mid);
     this.sort(mid + 1, hi);
+
+    // Improvement: Do not merge if two arrays are already sorted
     if (this.comparator.lessOrEqual(this.arr[mid], this.arr[mid + 1])) return;
+
     this.merge(lo, mid, hi);
   }
 }
