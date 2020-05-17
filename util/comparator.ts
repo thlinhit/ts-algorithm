@@ -11,8 +11,12 @@ export class Comparator<T> {
     return this.instruction(t1, t2) < 0;
   }
 
+  public greater(t1: T, t2: T): boolean {
+    return this.instruction(t1, t2) > 0;
+  }
+
   public equal(t1: T, t2: T): boolean {
-      return this.instruction(t1, t2) === 0;
+    return this.instruction(t1, t2) === 0;
   }
 
   public lessOrEqual(t1: T, t2: T): boolean {
