@@ -4,6 +4,8 @@ import { knuthRandom } from '../../random/knuth-random';
 import { exchange } from '../../../util/helper.util';
 
 export class Quicksort<T> {
+  private static medianOfThreePartitioning = true;
+
   // eslint-disable-next-line
   private constructor() {}
 
@@ -18,8 +20,9 @@ export class Quicksort<T> {
     if (from >= to) return;
 
     // Improvement: Use Insertionsort because Mergesort is complicated for arrays of ~ 7 elements.
-    if (from - to + 1 <= 7) {
+    if (to - from + 1 <= 5) {
       Insertionsort.sort(arr, comparator, from, to);
+      return;
     }
 
     const middle = this.partition(arr, comparator, from, to);
@@ -29,7 +32,9 @@ export class Quicksort<T> {
   }
 
   private static partition<T>(arr: T[], comparator: Comparator<T>, from: number, to: number): number {
-    const paritioningItem = arr[from];
+    const paritioningItem = this.medianOfThreePartitioning
+      ? this.getMedianOfThree(arr, comparator, from, to)
+      : arr[from];
 
     let left = from;
     let right = to + 1;
@@ -48,5 +53,23 @@ export class Quicksort<T> {
 
     exchange(arr, from, right);
     return right;
+  }
+
+  private static getMedianOfThree<T>(arr: T[], comparator: Comparator<T>, from: number, to: number): T {
+    const fromItem = arr[from];
+    const middle = Math.floor((from + to) / 2);
+    const middleItem = arr[middle];
+    const toItem = arr[to];
+
+    if (comparator.less(fromItem, middleItem) != comparator.less(toItem, middleItem)) {
+      exchange(arr, from, middle);
+      return middleItem;
+    } 
+    
+    if (comparator.less(fromItem, toItem) != comparator.less(middleItem, toItem)) {
+      exchange(arr, from, to);
+      return toItem;
+    } 
+    return fromItem;
   }
 }
