@@ -5,11 +5,11 @@ Merging with smaller auxiliary array. Suppose that the subarray 𝚊[𝟶] to �
  How can you merge the two subarrays so that 𝚊[𝟶] to 𝚊[𝟸∗𝚗−𝟷] is sorted using an auxiliary array of length n?
 */
 
-import { getRandomInt, isCorrectOrder } from '../../../util/helper.util';
+import { getRandomInt, isCorrectOrder, generateRandomNumberArr } from '../../../util/helper.util';
 
 describe('Merge two sorted arrays with smaller auxiliary array', () => {
   it('test', () => {
-    const arr = generateArr(1000);
+    const arr = generateRandomNumberArr(1000);
     const numberComparator: Comparator<number> = Comparator.create((n1: number, n2: number): -1 | 0 | 1 => {
       if (n1 === n2) return 0;
       return n1 < n2 ? -1 : 1;
@@ -19,14 +19,6 @@ describe('Merge two sorted arrays with smaller auxiliary array', () => {
 
     expect(isCorrectOrder(arr, numberComparator));
   });
-
-    function generateArr(n: number): number[] {
-      const arr = new Array(n);
-      for (let i = 0; i < n; i++) {
-        arr[i] = getRandomInt(n);
-      }
-      return arr;
-    }
 });
 
 function merge<T>(arr: T[], lo: number, mid: number, hi: number, comparator: Comparator<T>): void {

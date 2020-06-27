@@ -19,3 +19,12 @@ export function exchange<T>(arr: T[], i: number, j: number): void {
     arr[i] = arr[j];
     arr[j] = temp;
 }
+
+
+export function generateRandomNumberArr(total: number): number[] {
+    const arr = new Array(total);
+    for (let i = 0; i < total; i++) {
+      arr[i] = getRandomInt(total);
+    }
+    return arr;
+}
