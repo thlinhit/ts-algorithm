@@ -16,6 +16,21 @@ describe('InserstionSort', () => {
     expect(arr).toEqual([1, 2, 3, 4, 5, 7, 9, 10]);
   });
 
+
+  test('should work for partitial array', () => {
+    const arr: number[] = [1, 2, 3, 5, 4, 6];
+
+    const numberComparator: Comparator<number> = Comparator.create((a1: number, a2: number) => {
+      if (a1 == a2) return 0;
+      else if (a1 < a2) return -1;
+      else return 1;
+    });
+
+    Insertionsort.sort(arr, numberComparator, 3, 4);
+
+    expect(arr).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+
   test('should keep the order of the same keys', () => {
     type Person = {
       name: string;
