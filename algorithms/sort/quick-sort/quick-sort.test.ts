@@ -1,10 +1,10 @@
 import { Quicksort } from './quick-sort';
 import { Comparator } from './../../../util/comparator';
-import { isCorrectOrder } from '../../../util/helper.util';
+import { isCorrectOrder, generateRandomNumberArr } from '../../../util/helper.util';
 
 describe('Quicksort', () => {
   test('TestCase 1: should work', () => {
-    const arr: number[] = [5, 4, 1, 7, 9, 10, 2, 3, 6, 11, 8];
+    const arr: number[] = generateRandomNumberArr(100);
 
     const numberComparator: Comparator<number> = Comparator.create((a1: number, a2: number) => {
       if (a1 == a2) return 0;
@@ -14,7 +14,7 @@ describe('Quicksort', () => {
 
     Quicksort.sort(arr, numberComparator);
 
-    expect(arr).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+    expect(isCorrectOrder(arr, numberComparator));
   });
 
   test('TestCase 2: should work', () => {
