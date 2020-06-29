@@ -19,7 +19,7 @@ export class MinHeap<T> {
 
   public pop(): T {
     if (this.arr.length === 0) {
-      throw new Error('There is no item to pop');
+      throw new Error('Heap is empty');
     }
 
     exchange(this.arr, 0, this.arr.length - 1);
@@ -29,6 +29,26 @@ export class MinHeap<T> {
     this.sink(0);
 
     return result;
+  }
+
+  public peek(): T {
+    if (this.arr.length === 0) {
+      throw new Error('Heap is empty');
+    }
+
+    return this.arr[this.arr.length - 1];
+  }
+
+  public contains(item: T): boolean {
+    if (item == null) {
+      throw new Error('Item must not nil');
+    }
+    
+    return this.arr.includes(item);
+  }
+
+  public clear(): void {
+    this.arr = [];
   }
 
   private float(idx: number): void {
