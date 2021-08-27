@@ -57,7 +57,7 @@ export class Quicksort<T> {
 
   private static getMedianOfThree<T>(arr: T[], comparator: Comparator<T>, from: number, to: number): T {
     const fromItem = arr[from];
-    const middle = Math.floor((from + to) / 2);
+    const middle = from + (to - from) >>> 1;
     const middleItem = arr[middle];
     const toItem = arr[to];
 

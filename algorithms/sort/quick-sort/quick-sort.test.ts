@@ -42,16 +42,19 @@ describe('Quicksort', () => {
 
     expect(isCorrectOrder(arr, ageComparator));
 
-    // expect(arr).toEqual([
-    //   { name: 'Baby', age: 1 },
-    //   { name: 'Duc', age: 12 },
-    // { name: 'Duc2', age: 12 },
-    //   // Quicksort will fails randomly if there are two people having the same age
-    //   // Because it is not stable.
-    //   { name: 'An', age: 15 },
-    //   { name: 'Linh', age: 16 },
+    /*
+    expect(arr).toEqual([
+      { name: 'Baby', age: 1 },
 
-    //   { name: 'Nhi', age: 40 },
-    // ]);
+      // Quicksort will fails randomly if there are two people having the same age
+      // Because it is not stable.
+      { name: 'Duc', age: 12 },
+      { name: 'Duc2', age: 12 },
+
+      { name: 'An', age: 15 },
+      { name: 'Linh', age: 16 },
+      { name: 'Nhi', age: 40 },
+    ]);
+    */
   });
 });
